@@ -20,8 +20,9 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 <img src="https://imgur.com/qvbZpzo.gif" width=250><br>
 
 ### Notes
-Describe any challenges encountered while building the app.
-
+Experienced Friction dealing with the API app. Used the same API Key that Tim Lee used in his tutorial. Had to specify "movie_ID". 
+Must create an outlet from the collectionView to the CollectionView.swift file.
+In order to implement a viewController change with a "click", must use "override func prepare(for segue: ...)" function
 
 ---
 
