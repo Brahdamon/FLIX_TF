@@ -22,7 +22,6 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
             
-        print("Hello World")
         // Do any additional setup after loading the view.
         
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
@@ -36,7 +35,6 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
                     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                     
                 self.movies = dataDictionary["results"] as! [[String:Any]]
-                print(dataDictionary)
                 
                 self.tableView.reloadData()
                 
@@ -74,14 +72,32 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        
+        print("Loading Movie Details ")
+        
+        // Find the selected movie
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let movie = movies[indexPath.row]
+        
+        // Pass the  selected movie to the details view controller
+        
+        
+        let varDetailViewController = segue.destination as! detailViewController
+        varDetailViewController.movie = movie
+        
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    */
+    
 
 }
